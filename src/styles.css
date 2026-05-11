@@ -33,44 +33,52 @@
   --color-mint: var(--mint);
   --color-mint-foreground: var(--mint-foreground);
   --color-citrus: var(--citrus);
+  --color-citrus-foreground: var(--citrus-foreground);
   --color-grape: var(--grape);
+  --color-grape-foreground: var(--grape-foreground);
   --color-tangerine: var(--tangerine);
+  --color-tangerine-foreground: var(--tangerine-foreground);
   --color-sky: var(--sky);
+  --color-sky-foreground: var(--sky-foreground);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
 }
 
 :root {
   --radius: 1rem;
-  /* Dark cosmos background */
-  --background: oklch(0.16 0.02 260);
+  /* Deep dark background */
+  --background: oklch(0.12 0.01 260);
   --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.21 0.025 260);
+  --card: oklch(0.16 0.015 260);
   --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.21 0.025 260);
+  --popover: oklch(0.16 0.015 260);
   --popover-foreground: oklch(0.97 0.005 250);
-  /* Amber/Yellow primary — signature color */
-  --primary: oklch(0.85 0.17 85);
-  --primary-foreground: oklch(0.18 0.02 260);
-  --secondary: oklch(0.26 0.025 260);
+  /* PURE BOLD YELLOW — signature */
+  --primary: oklch(0.92 0.19 95);
+  --primary-foreground: oklch(0.13 0.02 260);
+  --secondary: oklch(0.22 0.02 260);
   --secondary-foreground: oklch(0.97 0.005 250);
-  --muted: oklch(0.24 0.02 260);
-  --muted-foreground: oklch(0.7 0.02 260);
-  --accent: oklch(0.3 0.03 260);
+  --muted: oklch(0.20 0.015 260);
+  --muted-foreground: oklch(0.65 0.02 260);
+  --accent: oklch(0.26 0.02 260);
   --accent-foreground: oklch(0.97 0.005 250);
-  --destructive: oklch(0.65 0.22 27);
+  --destructive: oklch(0.63 0.26 29);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(1 0 0 / 0.08);
   --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(0.85 0.17 85);
+  --ring: oklch(0.92 0.19 95);
 
-  /* Signature palette — Yellow + Red */
-  --mint: oklch(0.85 0.17 85);             /* amber/yellow — signature primary */
-  --mint-foreground: oklch(0.15 0.03 60);  /* dark warm for contrast on yellow */
-  --citrus: oklch(0.65 0.24 27);           /* crimson/red — signature accent */
-  --grape: oklch(0.74 0.13 305);           /* purple */
-  --tangerine: oklch(0.78 0.16 55);        /* orange */
-  --sky: oklch(0.84 0.08 235);            /* light blue */
+  /* BOLD palette — yellow + red family, all high chroma */
+  --mint: oklch(0.92 0.19 95);              /* PURE BOLD YELLOW — signature */
+  --mint-foreground: oklch(0.13 0.02 260);  /* deep dark for contrast */
+  --citrus: oklch(0.63 0.26 29);           /* BOLD RED — sparingly, never highlights */
+  --citrus-foreground: oklch(0.97 0.005 250);
+  --grape: oklch(0.72 0.22 330);           /* BOLD MAGENTA/PINK — related to red */
+  --grape-foreground: oklch(0.97 0.005 250);
+  --tangerine: oklch(0.75 0.20 55);        /* BOLD ORANGE — bridge yellow→red */
+  --tangerine-foreground: oklch(0.13 0.02 260);
+  --sky: oklch(0.75 0.15 250);             /* BOLD BLUE — one cool accent for depth */
+  --sky-foreground: oklch(0.97 0.005 250);
 
   --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -86,6 +94,66 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    cursor: none;
+  }
+
+  * {
+    cursor: none !important;
+  }
+
+  a, button, [role="button"], summary, [tabindex] {
+    cursor: none !important;
+  }
+
+  /* Neo-brutalism custom cursor */
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--mint);
+    border: 2px solid var(--foreground);
+    border-radius: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, border-radius 0.15s ease, background 0.15s ease;
+  }
+
+  .cursor-dot.hovering {
+    width: 48px;
+    height: 48px;
+    border-radius: 0;
+    background: var(--mint);
+    mix-blend-mode: difference;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--mint);
+    border-radius: 0;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.6;
+  }
+
+  .cursor-ring.hovering {
+    width: 64px;
+    height: 64px;
+    border-color: var(--citrus);
+    opacity: 0.3;
+  }
+
+  @media (pointer: coarse) {
+    .cursor-dot, .cursor-ring { display: none; }
+    html, body, * { cursor: auto !important; }
   }
 
   h1, h2, h3, h4 {
@@ -96,7 +164,7 @@
 
 /* Starfield */
 .starfield {
-  background-color: oklch(0.13 0.02 260);
+  background-color: oklch(0.10 0.01 260);
   background-image:
     radial-gradient(1px 1px at 12% 18%, white 50%, transparent 100%),
     radial-gradient(1px 1px at 78% 32%, white 50%, transparent 100%),
@@ -153,8 +221,8 @@
 
 .grid-bg {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, oklch(0.92 0.19 95 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.92 0.19 95 / 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 

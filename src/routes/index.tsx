@@ -83,7 +83,7 @@ function Nav() {
             ◆
           </div>
           <span className="font-display font-bold text-lg tracking-tight">OpenBuilder</span>
-          <span className="hidden sm:inline-flex ml-2 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest bg-citrus text-mint-foreground border-2 border-foreground">
+          <span className="hidden sm:inline-flex ml-2 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest bg-tangerine text-tangerine-foreground border-2 border-foreground">
             beta
           </span>
         </div>
@@ -114,7 +114,7 @@ function Hero() {
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-28 lg:pt-28 grid lg:grid-cols-12 gap-12 items-center">
           {/* LEFT */}
           <div className="lg:col-span-6 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-citrus text-mint-foreground border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] text-xs font-black tracking-wide uppercase mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-mint text-mint-foreground border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] text-xs font-black tracking-wide uppercase mb-8">
               <Flame className="size-3.5" />
               1,248 builders shipping right now
             </div>
@@ -142,11 +142,11 @@ function Hero() {
             <div className="flex items-center gap-6 mt-12 text-sm text-muted-foreground">
               <div className="flex -space-x-2">
                 {[
-                  "oklch(0.85 0.17 85)",
-                  "oklch(0.65 0.24 27)",
-                  "oklch(0.78 0.16 55)",
-                  "oklch(0.84 0.08 235)",
-                  "oklch(0.74 0.13 305)",
+                  "oklch(0.92 0.19 95)",
+                  "oklch(0.75 0.20 55)",
+                  "oklch(0.72 0.22 330)",
+                  "oklch(0.75 0.15 250)",
+                  "oklch(0.63 0.26 29)",
                 ].map((c, i) => (
                   <div
                     key={i}
@@ -163,7 +163,7 @@ function Hero() {
           <div className="lg:col-span-6 relative h-[560px] hidden lg:block">
             {/* Project card 1 */}
             <div className="absolute top-0 left-4 w-72 float-a">
-              <div className="bg-grape text-mint-foreground p-5 border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)]">
+              <div className="bg-grape text-white p-5 border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)]">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-[10px] font-black uppercase tracking-widest bg-foreground text-background px-2 py-1">Robotics</span>
                   <Cpu className="size-4" />
@@ -182,9 +182,10 @@ function Hero() {
               <div className="bg-card text-foreground p-5 border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)]">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="size-12 rounded-full bg-gradient-to-br from-mint to-tangerine border-2 border-foreground" />
+                  
                   <div>
-                    <div className="font-bold text-sm">@maya.builds</div>
-                    <div className="text-[11px] text-muted-foreground">MIT · 3rd year</div>
+                    <div className="font-bold text-sm">@BENi-Aditya</div>
+                    <div className="text-[11px] text-muted-foreground">RVCE · 1st Year</div>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-3">
@@ -215,7 +216,7 @@ function Hero() {
 
             {/* Collab request */}
             <div className="absolute top-[300px] right-4 w-60 float-a">
-              <div className="bg-tangerine text-mint-foreground p-4 border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)]">
+              <div className="bg-tangerine text-white p-4 border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)]">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="size-4" />
                   <span className="text-[10px] font-black uppercase tracking-widest">Collab request</span>
@@ -223,15 +224,15 @@ function Hero() {
                 <div className="text-sm font-bold mb-1">@kai_neural wants to join</div>
                 <div className="text-xs opacity-80 mb-3">"AI Tutor" project</div>
                 <div className="flex gap-2">
-                  <button className="text-[11px] font-bold flex-1 py-1.5 bg-mint-foreground text-tangerine">Accept</button>
-                  <button className="text-[11px] font-bold flex-1 py-1.5 border-2 border-mint-foreground">Later</button>
+                  <button className="text-[11px] font-bold flex-1 py-1.5 bg-white/20 backdrop-blur">Accept</button>
+                  <button className="text-[11px] font-bold flex-1 py-1.5 border-2 border-white/50">Later</button>
                 </div>
               </div>
             </div>
 
             {/* Trending pill */}
             <div className="absolute bottom-4 left-16 float-b">
-              <div className="bg-citrus text-mint-foreground px-4 py-2 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] text-xs font-black uppercase tracking-widest flex items-center gap-2">
+              <div className="bg-tangerine text-tangerine-foreground px-4 py-2 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] text-xs font-black uppercase tracking-widest flex items-center gap-2">
                 <Flame className="size-3.5" /> Trending: ClimateOS
               </div>
             </div>
@@ -246,11 +247,11 @@ function Hero() {
 function LiveShowcase() {
   const projects = [
     { title: "StudyAI", tagline: "Adaptive flashcards that actually work.", tag: "EdTech", author: "@kai_neural", bg: "bg-mint", stack: ["Next.js", "OpenAI", "Postgres"], stat: "2.3K", help: "Looking for designer" },
-    { title: "AeroDrone", tagline: "Open-source delivery drone for campuses.", tag: "Robotics", author: "@maya.builds", bg: "bg-citrus", stack: ["Python", "ROS2", "C++"], stat: "1.2K", help: "Need ROS dev" },
+    { title: "AeroDrone", tagline: "Open-source delivery drone for campuses.", tag: "Robotics", author: "@maya.builds", bg: "bg-tangerine", stack: ["Python", "ROS2", "C++"], stat: "1.2K", help: "Need ROS dev" },
     { title: "FinPulse", tagline: "Personal finance dashboard for Gen Z.", tag: "FinTech", author: "@leo_codes", bg: "bg-grape", stack: ["React", "Plaid", "Supabase"], stat: "2.9K", help: "Open for collab" },
     { title: "ClimateOS", tagline: "Open data layer for climate action.", tag: "Climate", author: "@sarah.green", bg: "bg-sky", stack: ["TypeScript", "D3", "Mapbox"], stat: "1.8K", help: "Seeking cofounder" },
     { title: "PulseHealth", tagline: "AI triage for student health centers.", tag: "HealthTech", author: "@aryan.dev", bg: "bg-tangerine", stack: ["FastAPI", "GPT-4", "Vue"], stat: "3.4K", help: "Beta testers wanted" },
-    { title: "DevSpace", tagline: "Collaborative IDE for student dev teams.", tag: "DevTools", author: "@riya.exe", bg: "bg-citrus", stack: ["Rust", "WASM", "Tauri"], stat: "1.6K", help: "Hackathon ready" },
+    { title: "DevSpace", tagline: "Collaborative IDE for student dev teams.", tag: "DevTools", author: "@riya.exe", bg: "bg-grape", stack: ["Rust", "WASM", "Tauri"], stat: "1.6K", help: "Hackathon ready" },
   ];
 
   return (
@@ -284,7 +285,7 @@ function ProjectCard(p: {
 }) {
   return (
     <div className="group bg-card border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[10px_10px_0_0_var(--color-foreground)] transition">
-      <div className={`${p.bg} p-6 aspect-[4/3] flex flex-col justify-between text-mint-foreground relative overflow-hidden border-b-2 border-foreground`}>
+      <div className={`${p.bg} p-6 aspect-[4/3] flex flex-col justify-between text-white relative overflow-hidden border-b-2 border-foreground`}>
         <div className="flex items-start justify-between">
           <span className="px-2.5 py-1 bg-foreground text-background text-[10px] font-black uppercase tracking-widest">{p.tag}</span>
           <button className="size-9 bg-foreground text-background grid place-items-center group-hover:rotate-12 transition">
@@ -336,7 +337,7 @@ function WhyExists() {
             02 / Why we exist
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-bold leading-[0.95] mb-6">
-            Student builders are <span className="bg-tangerine text-mint-foreground px-2 -rotate-1 inline-block">scattered</span> across five apps.
+            Student builders are <span className="bg-tangerine text-tangerine-foreground px-2 -rotate-1 inline-block">scattered</span> across five apps.
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             OpenBuilder is the first ecosystem designed specifically for the way students actually build — projects, identity, teams, and AI mentorship in one visual home.
@@ -359,7 +360,7 @@ function WhyExists() {
             <h3 className="font-display text-3xl md:text-4xl font-bold mb-4 leading-tight">
               One home. Built for builders.
             </h3>
-            <p className="text-mint-foreground/80 mb-6">
+            <p className="text-mint-foreground/70 mb-6">
               Projects, identity, teams, AI — all visual, all public, all connected.
             </p>
             <ul className="space-y-2 font-bold text-sm">
@@ -384,7 +385,7 @@ function FeatureShowcase() {
             03 / Project pages
           </div>
           <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Your projects deserve more than a <span className="bg-citrus text-mint-foreground px-2 -rotate-1 inline-block">GitHub repo.</span>
+            Your projects deserve more than a <span className="bg-tangerine text-tangerine-foreground px-2 -rotate-1 inline-block">GitHub repo.</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-6">
             Visual project pages with image galleries, live demos, README previews, build logs, and team credits — all auto-organized.
@@ -405,7 +406,7 @@ function FeatureShowcase() {
         </div>
         <div className="lg:col-span-7 order-1 lg:order-2">
           <div className="bg-card border-2 border-foreground shadow-[10px_10px_0_0_var(--color-foreground)]">
-            <div className="bg-grape text-mint-foreground p-8 border-b-2 border-foreground">
+            <div className="bg-grape text-white p-8 border-b-2 border-foreground">
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <div className="text-[10px] font-black uppercase tracking-widest bg-foreground text-background inline-block px-2 py-0.5 mb-3">Robotics</div>
@@ -416,7 +417,7 @@ function FeatureShowcase() {
               </div>
               <div className="grid grid-cols-3 gap-2">
                 <div className="aspect-square bg-mint border-2 border-foreground" />
-                <div className="aspect-square bg-citrus border-2 border-foreground" />
+                <div className="aspect-square bg-tangerine border-2 border-foreground" />
                 <div className="aspect-square bg-tangerine border-2 border-foreground" />
               </div>
             </div>
@@ -493,7 +494,7 @@ function BuilderProfileFeature() {
             04 / Identity
           </div>
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Build your identity as a <span className="bg-grape text-mint-foreground px-2 -rotate-1 inline-block">creator.</span>
+            Build your identity as a <span className="bg-grape text-white px-2 -rotate-1 inline-block">creator.</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
             Every commit, prototype, and collab adds to your reputation. Show the world what you can ship — not just where you study.
@@ -537,7 +538,7 @@ function TeamMatching() {
           <div className="space-y-3">
             {[
               ["AI backend + UI design", "98%", "bg-mint"],
-              ["Robotics + ROS2 specialist", "84%", "bg-citrus"],
+              ["Robotics + ROS2 specialist", "84%", "bg-tangerine"],
               ["Smart contract security", "62%", "bg-grape"],
             ].map(([role, pct, c]) => (
               <div key={role} className="flex items-center justify-between p-4 bg-background border-2 border-foreground">
@@ -589,7 +590,7 @@ function AIAssistant() {
           06 / AI mentor
         </div>
         <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 leading-tight">
-          AI that helps you <span className="bg-tangerine text-mint-foreground px-2 -rotate-1 inline-block">actually build.</span>
+          AI that helps you <span className="bg-tangerine text-tangerine-foreground px-2 -rotate-1 inline-block">actually build.</span>
         </h2>
         <p className="text-lg text-muted-foreground">Trained on thousands of hackathon wins and student startups.</p>
       </div>
@@ -633,7 +634,7 @@ function AIAssistant() {
 function BuildFeed() {
   const feed = [
     { who: "@arnav.zero", action: "just launched", what: "PitchPal v1.0", time: "2m", color: "bg-mint", icon: <Rocket className="size-4" /> },
-    { who: "@maya.builds", action: "posted update on", what: "Mars Rover Mk.II", time: "8m", color: "bg-citrus", icon: <Hammer className="size-4" /> },
+    { who: "@maya.builds", action: "posted update on", what: "Mars Rover Mk.II", time: "8m", color: "bg-tangerine", icon: <Hammer className="size-4" /> },
     { who: "@kai_neural", action: "is looking for a", what: "Backend dev for StudyAI", time: "14m", color: "bg-tangerine", icon: <Users className="size-4" /> },
     { who: "@sarah.green", action: "shipped milestone", what: "ClimateOS reaches 10K downloads", time: "32m", color: "bg-grape", icon: <Trophy className="size-4" /> },
     { who: "@leo_codes", action: "opened beta for", what: "FinPulse", time: "1h", color: "bg-sky", icon: <Sparkles className="size-4" /> },
@@ -657,7 +658,7 @@ function BuildFeed() {
         <div className="grid md:grid-cols-2 gap-4">
           {feed.map((f, i) => (
             <div key={i} className="bg-background border-2 border-foreground shadow-[5px_5px_0_0_var(--color-foreground)] p-5 flex items-center gap-4">
-              <div className={`size-12 shrink-0 ${f.color} border-2 border-foreground grid place-items-center text-mint-foreground`}>
+              <div className={`size-12 shrink-0 ${f.color} border-2 border-foreground grid place-items-center text-white`}>
                 {f.icon}
               </div>
               <div className="flex-1 min-w-0">
@@ -699,9 +700,9 @@ function SocialProof() {
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {items.map((x, i) => {
-          const colors = ["bg-mint","bg-citrus","bg-grape","bg-tangerine"];
+          const colors = ["bg-mint","bg-tangerine","bg-grape","bg-sky"];
           return (
-            <div key={x.l} className={`${colors[i]} text-mint-foreground p-8 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)]`}>
+            <div key={x.l} className={`${colors[i]} p-8 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] text-white`}>
               <div className="font-display text-5xl font-bold">{x.n}</div>
               <div className="text-sm font-bold uppercase tracking-widest mt-2 opacity-80">{x.l}</div>
             </div>
