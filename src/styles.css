@@ -1,0 +1,171 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-mint: var(--mint);
+  --color-mint-foreground: var(--mint-foreground);
+  --color-citrus: var(--citrus);
+  --color-grape: var(--grape);
+  --color-tangerine: var(--tangerine);
+  --color-sky: var(--sky);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 1rem;
+  /* Dark cosmos background */
+  --background: oklch(0.16 0.02 260);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.21 0.025 260);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.21 0.025 260);
+  --popover-foreground: oklch(0.97 0.005 250);
+  /* Amber/Yellow primary — signature color */
+  --primary: oklch(0.85 0.17 85);
+  --primary-foreground: oklch(0.18 0.02 260);
+  --secondary: oklch(0.26 0.025 260);
+  --secondary-foreground: oklch(0.97 0.005 250);
+  --muted: oklch(0.24 0.02 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+  --accent: oklch(0.3 0.03 260);
+  --accent-foreground: oklch(0.97 0.005 250);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.12);
+  --ring: oklch(0.85 0.17 85);
+
+  /* Signature palette — Yellow + Red */
+  --mint: oklch(0.85 0.17 85);             /* amber/yellow — signature primary */
+  --mint-foreground: oklch(0.15 0.03 60);  /* dark warm for contrast on yellow */
+  --citrus: oklch(0.65 0.24 27);           /* crimson/red — signature accent */
+  --grape: oklch(0.74 0.13 305);           /* purple */
+  --tangerine: oklch(0.78 0.16 55);        /* orange */
+  --sky: oklch(0.84 0.08 235);            /* light blue */
+
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Starfield */
+.starfield {
+  background-color: oklch(0.13 0.02 260);
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, white 50%, transparent 100%),
+    radial-gradient(1px 1px at 78% 32%, white 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 42% 78%, rgba(255,255,255,0.9) 50%, transparent 100%),
+    radial-gradient(1px 1px at 88% 88%, white 50%, transparent 100%),
+    radial-gradient(1px 1px at 22% 88%, rgba(255,255,255,0.7) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 12%, white 50%, transparent 100%),
+    radial-gradient(1px 1px at 6% 60%, rgba(255,255,255,0.6) 50%, transparent 100%),
+    radial-gradient(1px 1px at 95% 55%, white 50%, transparent 100%),
+    radial-gradient(2px 2px at 33% 40%, rgba(255,255,255,0.85) 50%, transparent 100%),
+    radial-gradient(1px 1px at 70% 70%, white 50%, transparent 100%);
+  background-size: 100% 100%;
+}
+
+.glow-mint {
+  box-shadow: 0 0 60px -10px color-mix(in oklab, var(--mint) 50%, transparent);
+}
+.glow-citrus {
+  box-shadow: 0 0 60px -10px color-mix(in oklab, var(--citrus) 40%, transparent);
+}
+
+/* Neo-brutal hard shadows */
+.brutal {
+  border: 2px solid oklch(0.97 0.005 250);
+  box-shadow: 6px 6px 0 0 oklch(0.97 0.005 250);
+}
+.brutal-mint { border: 2px solid var(--mint); box-shadow: 6px 6px 0 0 var(--mint); }
+.brutal-citrus { border: 2px solid var(--citrus); box-shadow: 6px 6px 0 0 var(--citrus); }
+.brutal-grape { border: 2px solid var(--grape); box-shadow: 6px 6px 0 0 var(--grape); }
+.brutal-tangerine { border: 2px solid var(--tangerine); box-shadow: 6px 6px 0 0 var(--tangerine); }
+.brutal-sky { border: 2px solid var(--sky); box-shadow: 6px 6px 0 0 var(--sky); }
+.brutal-sm { border: 2px solid oklch(0.97 0.005 250); box-shadow: 3px 3px 0 0 oklch(0.97 0.005 250); }
+
+.brutal-hover {
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.brutal-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 9px 9px 0 0 currentColor;
+}
+
+@keyframes float-a { 0%,100%{ transform: translateY(0) rotate(-3deg);} 50%{ transform: translateY(-10px) rotate(-3deg);} }
+@keyframes float-b { 0%,100%{ transform: translateY(0) rotate(2deg);} 50%{ transform: translateY(-14px) rotate(2deg);} }
+@keyframes float-c { 0%,100%{ transform: translateY(0) rotate(-1deg);} 50%{ transform: translateY(-8px) rotate(-1deg);} }
+.float-a { animation: float-a 7s ease-in-out infinite; }
+.float-b { animation: float-b 9s ease-in-out infinite; }
+.float-c { animation: float-c 8s ease-in-out infinite; }
+
+@keyframes marquee-rev {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.ticker-rev { animation: marquee-rev 40s linear infinite; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker { animation: ticker 40s linear infinite; }
