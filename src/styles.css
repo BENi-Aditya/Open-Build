@@ -105,54 +105,52 @@
     cursor: none !important;
   }
 
-  /* Neo-brutalism custom cursor */
-  .cursor-dot {
+  /* Pixel art pointer (hotspot: image top-left = tip) */
+  .pixel-cursor {
     position: fixed;
     top: 0;
     left: 0;
-    width: 12px;
-    height: 12px;
-    background: var(--mint);
-    border: 2px solid var(--foreground);
-    border-radius: 0;
     pointer-events: none;
     z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: width 0.15s ease, height 0.15s ease, border-radius 0.15s ease, background 0.15s ease;
+    image-rendering: pixelated;
+    transition: transform 0.1s ease;
   }
 
-  .cursor-dot.hovering {
-    width: 48px;
-    height: 48px;
-    border-radius: 0;
-    background: var(--mint);
-    mix-blend-mode: difference;
+  .pixel-cursor.hovering {
+    transform: scale(1.12);
   }
 
-  .cursor-ring {
+  @keyframes pixel-cursor-pop {
+    0% {
+      transform: scale(1);
+    }
+    45% {
+      transform: scale(0.88);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .pixel-cursor.click-pop {
+    animation: pixel-cursor-pop 0.16s ease-out;
+  }
+
+  /* Click pixel burst */
+  .pixel-particle {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--mint);
-    border-radius: 0;
     pointer-events: none;
-    z-index: 99998;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
-    opacity: 0.6;
+    z-index: 99997;
+    image-rendering: pixelated;
   }
 
-  .cursor-ring.hovering {
-    width: 64px;
-    height: 64px;
-    border-color: var(--citrus);
-    opacity: 0.3;
+  @keyframes pixel-burst {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--px), var(--py)) scale(0.2); }
   }
 
   @media (pointer: coarse) {
-    .cursor-dot, .cursor-ring { display: none; }
+    .pixel-cursor, .pixel-particle { display: none; }
     html, body, * { cursor: auto !important; }
   }
 

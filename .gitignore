@@ -1,1 +1,13 @@
 node_modules
+
+# macOS
+.DS_Store
+
+# Cloudflare Wrangler (generated locally / in CI)
+.wrangler/
+
+# Build output
+dist/
+
+# Demo video exceeds GitHub 100MB file limit — keep locally for dev/preview
+public/projects/Mock copy.mov
