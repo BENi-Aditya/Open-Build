@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "vite dev",
@@ -67,6 +67,9 @@
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
     "zod": "^3.24.2"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.60.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
