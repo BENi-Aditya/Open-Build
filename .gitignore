@@ -9,5 +9,8 @@ node_modules
 # Build output
 dist/
 
+# Vercel Build Output API (from `VERCEL=1` / Nitro local builds)
+.vercel/output
+
 # Demo video exceeds GitHub 100MB file limit — keep locally for dev/preview
 public/projects/Mock copy.mov
