@@ -3,7 +3,7 @@ node_modules
 # macOS
 .DS_Store
 
-# Cloudflare Wrangler (generated locally / in CI)
+# Cloudflare Wrangler (generated locally / in CI — never commit)
 .wrangler/
 
 # Build output

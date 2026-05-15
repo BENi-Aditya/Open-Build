@@ -9,7 +9,10 @@ import { nitro } from "nitro/vite";
 
 // Vercel: use Nitro output (see https://vercel.com/docs/frameworks/full-stack/tanstack-start).
 // Cloudflare Workers build (dist/server + wrangler) is not what Vercel serves → 404 without this.
-const isVercel = process.env.VERCEL === "1";
+// Use truthy VERCEL / VERCEL_URL (not only VERCEL==="1") so CI and edge cases still pick Nitro.
+const isVercelBuild = Boolean(
+  process.env.VERCEL && process.env.VERCEL !== "0",
+) || Boolean(process.env.VERCEL_URL);
 
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
@@ -17,6 +20,6 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
-  cloudflare: isVercel ? false : undefined,
-  plugins: isVercel ? [nitro()] : [],
+  cloudflare: isVercelBuild ? false : undefined,
+  plugins: isVercelBuild ? [nitro({ preset: "vercel" })] : [],
 });
