@@ -317,7 +317,10 @@ function Hero() {
   );
 }
 
-const MOCK_DEMO_VIDEO = `/projects/${encodeURIComponent("Mock copy.mov")}`;
+/** Local file is gitignored (>100MB); set VITE_MOCK_DEMO_VIDEO in Vercel for production. */
+const MOCK_DEMO_VIDEO =
+  import.meta.env.VITE_MOCK_DEMO_VIDEO ||
+  `/projects/${encodeURIComponent("Mock copy.mov")}`;
 
 /** HornBill demo reel: defers `<video>` mount until the tile is near viewport. */
 function FeatureMockVideo() {
