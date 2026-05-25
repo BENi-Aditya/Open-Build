@@ -1,0 +1,373 @@
+================================================================================
+OPENBUILDER — DESIGN LANGUAGE, STYLE GUIDE & PIXEL CURSOR RECREATION
+================================================================================
+
+Source: Open-Build (TanStack Start landing page)
+Files: src/styles.css, src/routes/index.tsx
+
+================================================================================
+1. DESIGN LANGUAGE & STYLE
+================================================================================
+
+OVERALL AESTHETIC
+-----------------
+OpenBuilder uses a hybrid of:
+  • Neo-brutalism — thick borders, hard offset shadows, no soft blur on cards
+  • Retro / pixel UI — custom pixel-art cursor, crisp edges, 8-bit click feedback
+  • Dark “builder space” — deep purple-tinted blacks with a starfield hero
+  • High-energy startup landing — bold yellow primary, saturated accent blocks
+
+The mood is: student builders, hackathons, hardware + software, playful but
+confident—not corporate minimalism.
+
+COLOR SYSTEM (OKLCH)
+--------------------
+Defined in src/styles.css (:root). All colors use OKLCH for perceptual consistency.
+
+Base (dark UI):
+  • Background:     oklch(0.12 0.01 260)   — near-black with slight cool hue
+  • Foreground:     oklch(0.97 0.005 250) — off-white text
+  • Card:           oklch(0.16 0.015 260)
+  • Muted text:     oklch(0.65 0.02 260)
+  • Borders:        oklch(1 0 0 / 0.08)   — subtle white alpha
+
+Signature / primary:
+  • “Mint” (actually bold yellow): oklch(0.92 0.19 95)  — #FFD600 family
+  • Mint foreground:               oklch(0.13 0.02 260)  — dark text on yellow
+
+Accent palette (high chroma, used as block fills):
+  • Citrus (red):      oklch(0.63 0.26 29)   — destructive / emphasis
+  • Grape (magenta):   oklch(0.72 0.22 330)  — project cards, gradients
+  • Tangerine:         oklch(0.75 0.20 55)   — badges, collab cards
+  • Sky (blue):        oklch(0.75 0.15 250)  — rare cool accent for depth
+
+Hex equivalents used in cursor/particles (hard-coded):
+  • Yellow fill:  #FFD600
+  • Ink/outline:  #0a0a0a
+
+TYPOGRAPHY
+----------
+Loaded via Google Fonts (index route head):
+  • Display:  Space Grotesk (500, 600, 700) — h1–h4, card titles, hero
+  • Body:     Inter (400–800)
+  • Mono:     JetBrains Mono (400, 600) — tags, beta pill, tech labels
+
+Patterns:
+  • Headings: font-display, font-bold, tracking-tight, letter-spacing -0.02em
+  • Hero H1:  text-5xl → md:text-7xl → lg:text-[5.5rem], leading-[0.9]
+  • Labels:   text-[10px], font-black, uppercase, tracking-widest
+  • Body nav: text-sm, font-semibold, muted-foreground → hover foreground
+
+LAYOUT & SPACING
+----------------
+  • Max content width: max-w-7xl, horizontal padding px-6
+  • Section rhythm: generous vertical padding (e.g. pt-20 pb-28 hero)
+  • 12-column grid on large screens for hero split
+  • Sticky nav: h-16, backdrop-blur-xl, bg-background/70, border-b-2
+
+NEO-BRUTAL SHADOW SYSTEM
+------------------------
+Core pattern on buttons/cards:
+  • border-2 border-foreground (2px solid near-white)
+  • box-shadow: Npx Npx 0 0 var(--color-foreground)  (hard offset, no blur)
+
+Common sizes:
+  • Small:  shadow-[3px_3px_0_0_var(--color-foreground)]
+  • Medium: shadow-[6px_6px_0_0_var(--color-foreground)]
+  • Large:  shadow-[8px_8px_0_0_var(--color-foreground)]
+
+Hover (buttons/cards):
+  • translate-x-[-2px] translate-y-[-2px]
+  • shadow grows by ~2px (e.g. 6px → 8px offset)
+  • transition on transform + shadow
+
+Utility classes in styles.css:
+  • .brutal, .brutal-mint, .brutal-grape, etc. — 6px 6px hard shadow
+  • .brutal-hover — lift + shadow expand on hover
+
+BACKGROUNDS & ATMOSPHERE
+------------------------
+  • .starfield — darker base + 10 radial-gradient “stars” (1–2px dots)
+  • .grid-bg — 48×48px grid, yellow lines at 5% opacity on dark
+  • .glow-mint / .glow-citrus — soft colored halos (60px blur) for highlights
+
+MOTION
+------
+  • .float-a / .float-b / .float-c — gentle Y-axis float + slight rotation
+    (7s, 9s, 8s ease-in-out infinite) on hero collage cards
+  • .ticker / .ticker-rev — 40s linear infinite horizontal marquee
+  • .float-slow — 6s vertical bob
+  • UI transitions: ~0.15s ease on brutal hovers; 0.1s on cursor position
+
+COMPONENT PATTERNS
+------------------
+  • Cards: solid accent background + white/dark text + 2px border + hard shadow
+  • CTAs: bg-mint + mint-foreground, bold, large padding (px-7 py-4)
+  • Badges: uppercase mono/black weight, bordered, sometimes rotated (-rotate-1)
+  • Tags: text-[10px] font-mono font-bold, bg-background, border border-foreground/40
+  • Images in cards: border-t-2 border-foreground, aspect-[4/3] object-cover
+  • Icons: lucide-react, size-3.5 to size-5, often paired with labels
+
+INTERACTION PHILOSOPHY
+----------------------
+  • System cursor hidden globally (cursor: none)
+  • Custom pixel pointer replaces it on fine pointers only
+  • Touch devices: native cursor restored via @media (pointer: coarse)
+  • Interactive elements get cursor scale-up on hover
+  • Clicks trigger squash animation + 8-pixel particle burst
+
+SHADCN / UI KIT
+---------------
+The project includes shadcn/ui components, but the landing page aesthetic is
+custom-built in index.tsx; the design language above is what users see on /.
+
+================================================================================
+2. RECREATING THE EXACT PIXEL MOUSE CURSOR & EFFECTS
+================================================================================
+
+This section reproduces the implementation in:
+  • src/routes/index.tsx  (NeoCursor, pixelPointerDataUrl)
+  • src/styles.css        (.pixel-cursor, .pixel-particle, keyframes)
+
+OVERVIEW
+--------
+Four layers work together:
+  1. Hide the OS cursor on html/body and all elements
+  2. Render a 24×24 <img> of a procedurally generated 12×12 SVG arrow
+  3. Track mousemove to position the image at clientX/clientY (hotspot = top-left tip)
+  4. On mousedown: squash animation + 8 alternating-color square particles
+
+STEP 1 — HIDE THE DEFAULT CURSOR (CSS)
+--------------------------------------
+Add to your global stylesheet:
+
+  html, body {
+    cursor: none;
+  }
+  *, a, button, [role="button"], summary, [tabindex] {
+    cursor: none !important;
+  }
+
+  @media (pointer: coarse) {
+    .pixel-cursor, .pixel-particle { display: none; }
+    html, body, * { cursor: auto !important; }
+  }
+
+STEP 2 — CURSOR & PARTICLE STYLES (CSS)
+---------------------------------------
+
+  .pixel-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    image-rendering: pixelated;
+    transition: transform 0.1s ease;
+  }
+
+  .pixel-cursor.hovering {
+    transform: scale(1.12);
+  }
+
+  @keyframes pixel-cursor-pop {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(0.88); }
+    100% { transform: scale(1); }
+  }
+
+  .pixel-cursor.click-pop {
+    animation: pixel-cursor-pop 0.16s ease-out;
+  }
+
+  .pixel-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99997;
+    image-rendering: pixelated;
+  }
+
+  @keyframes pixel-burst {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--px), var(--py)) scale(0.2); }
+  }
+
+STEP 3 — GENERATE THE PIXEL ARROW (JavaScript/TypeScript)
+---------------------------------------------------------
+The arrow is NOT an image file. It is built from a 12×12 cell grid:
+
+  Colors:
+    ink  = "#0a0a0a"  (outline / edge pixels)
+    fill = "#FFD600"  (interior yellow)
+
+  Cell rules (x,y as integers):
+    • Triangle body: for y from 0 to 9, for x from 0 to y, add cell (x,y)
+    • Stem: for y from 10 to 11, for x from 0 to 1, add cell (x,y)
+
+  For each cell, if any 4-neighbor (±1 x or y) is empty, use ink; else fill.
+
+  SVG: width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges"
+  Export as data URL:
+    `data:image/svg+xml,` + encodeURIComponent(svgString)
+
+Full function (copy exactly):
+
+  function pixelPointerDataUrl(): string {
+    const ink = "#0a0a0a";
+    const fill = "#FFD600";
+    const cells = new Set<string>();
+    for (let y = 0; y <= 9; y++)
+      for (let x = 0; x <= y; x++) cells.add(`${x},${y}`);
+    for (let y = 10; y <= 11; y++)
+      for (let x = 0; x <= 1; x++) cells.add(`${x},${y}`);
+    const inCell = (x: number, y: number) => cells.has(`${x},${y}`);
+    const rects: string[] = [];
+    for (const key of cells) {
+      const [x, y] = key.split(",").map(Number);
+      const edge = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(
+        ([dx, dy]) => !inCell(x + dx, y + dy)
+      );
+      rects.push(
+        `<rect x="${x}" y="${y}" width="1" height="1" fill="${edge ? ink : fill}"/>`
+      );
+    }
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" shape-rendering="crispEdges">${rects.join("")}</svg>`;
+    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+  }
+
+  const PIXEL_ARROW = pixelPointerDataUrl();
+
+Display at 2× scale:
+  <img src={PIXEL_ARROW} width="24" height="24" className="pixel-cursor" draggable={false} alt="" />
+
+Hotspot: CSS positions top-left of the 24×24 image at the mouse point, so the
+arrow tip (grid 0,0) sits exactly under the pointer—same as classic cursor hotspot.
+
+STEP 4 — REACT COMPONENT (NeoCursor)
+------------------------------------
+
+  function NeoCursor() {
+    const cursorRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+      const cursor = cursorRef.current;
+      if (!cursor) return;
+
+      const move = (e: MouseEvent) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      };
+
+      const enter = () => cursor.classList.add("hovering");
+      const leave = () => cursor.classList.remove("hovering");
+
+      const click = (e: MouseEvent) => {
+        // Restart click squash animation
+        cursor.classList.remove("click-pop");
+        void cursor.offsetWidth; // force reflow
+        cursor.classList.add("click-pop");
+        const onAnimEnd = () => {
+          cursor.classList.remove("click-pop");
+          cursor.removeEventListener("animationend", onAnimEnd);
+        };
+        cursor.addEventListener("animationend", onAnimEnd);
+
+        // 8-pixel burst
+        for (let i = 0; i < 8; i++) {
+          const p = document.createElement("motionless-div");
+          p.className = "pixel-particle";
+          const angle = (Math.PI * 2 * i) / 8;
+          const dist = 14 + Math.random() * 10; // 14–24px travel
+          p.style.cssText = [
+            `left:${e.clientX}px`,
+            `top:${e.clientY}px`,
+            `width:4px`,
+            `height:4px`,
+            `background:${i % 2 === 0 ? "#FFD600" : "#0a0a0a"}`,
+            `--px:${Math.cos(angle) * dist}px`,
+            `--py:${Math.sin(angle) * dist}px`,
+            `animation:pixel-burst 0.28s ease-out forwards`,
+          ].join(";");
+          document.body.appendChild(p);
+          setTimeout(() => p.remove(), 300);
+        }
+      };
+
+      document.addEventListener("mousemove", move);
+      document.addEventListener("mousedown", click);
+
+      const interactives = document.querySelectorAll(
+        'a, button, [role="button"], input, textarea, select, summary, [tabindex]'
+      );
+      interactives.forEach((el) => {
+        el.addEventListener("mouseenter", enter);
+        el.addEventListener("mouseleave", leave);
+      });
+
+      return () => {
+        document.removeEventListener("mousemove", move);
+        document.removeEventListener("mousedown", click);
+        interactives.forEach((el) => {
+          el.removeEventListener("mouseenter", enter);
+          el.removeEventListener("mouseleave", leave);
+        });
+      };
+    }, []);
+
+    return (
+      <img
+        ref={cursorRef}
+        src={PIXEL_ARROW}
+        alt=""
+        width={24}
+        height={24}
+        className="pixel-cursor"
+        draggable={false}
+      />
+    );
+  }
+
+Mount once at app root (sibling to page content):
+  <NeoCursor />
+
+STEP 5 — EFFECT PARAMETERS (EXACT VALUES)
+-----------------------------------------
+| Effect              | Value                                      |
+|---------------------|--------------------------------------------|
+| Cursor display size | 24×24 px (12×12 art × 2)                   |
+| Position            | left = clientX, top = clientY (fixed)      |
+| Move smoothing      | transform transition 0.1s ease             |
+| Hover scale         | 1.12 (class .hovering)                     |
+| Click squash        | scale 1 → 0.88 @ 45% → 1, duration 0.16s   |
+| Particle count      | 8                                          |
+| Particle size       | 4×4 px                                     |
+| Particle colors     | even i: #FFD600, odd i: #0a0a0a            |
+| Burst angles        | i * (2π/8), uniform ring                   |
+| Burst distance      | 14 + random() * 10 px                      |
+| Burst animation     | pixel-burst 0.28s ease-out forwards        |
+| Particle cleanup    | remove DOM node after 300ms                |
+| Cursor z-index      | 99999                                      |
+| Particle z-index    | 99997                                      |
+
+STEP 6 — DYNAMIC CONTENT NOTE
+-----------------------------
+Interactive elements added after mount are NOT auto-wired for hover scale.
+The app uses a static list at useEffect time. For SPA routes with late-mounted
+buttons, re-run the querySelector + addEventListener logic on route change or
+use event delegation:
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest('a, button, ...')) enter();
+  });
+
+(OpenBuilder does not do this; match it exactly by keeping the static forEach.)
+
+STEP 7 — VANILLA JS EQUIVALENT (NO REACT)
+-----------------------------------------
+  1. Call pixelPointerDataUrl() once.
+  2. Create <img class="pixel-cursor" src="..." width="24" height="24">, append to body.
+  3. Copy the same addEventListener logic from the useEffect above.
+
+================================================================================
+END OF DOCUMENT
+================================================================================
