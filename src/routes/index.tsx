@@ -167,7 +167,7 @@ function Nav() {
     <nav className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b-2 border-foreground/10">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="OpenBuilder" className="size-9 rounded-lg border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] object-cover" />
+          <img src="/logo.webp" alt="OpenBuilder" className="size-9 rounded-lg border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] object-cover" />
           <span className="font-display font-bold text-lg tracking-tight">OpenBuilder</span>
           <span className="hidden sm:inline-flex ml-2 px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest bg-tangerine text-tangerine-foreground border-2 border-foreground">
             beta
@@ -241,7 +241,7 @@ function Hero() {
                   <div className="text-[11px] opacity-90 mt-1.5 leading-snug">by @BENiAditya · +1 builder</div>
                 </div>
                 <img
-                  src="/projects/Drone.png"
+                  src="/projects/Drone.webp"
                   alt=""
                   className="w-full aspect-[4/3] object-cover border-t-2 border-foreground"
                   loading="lazy"
@@ -320,7 +320,7 @@ function Hero() {
 /** Local file is gitignored (>100MB); set VITE_MOCK_DEMO_VIDEO in Vercel for production. */
 const MOCK_DEMO_VIDEO =
   import.meta.env.VITE_MOCK_DEMO_VIDEO ||
-  `/projects/${encodeURIComponent("Mock copy.mov")}`;
+  `/projects/${encodeURIComponent("mock.mp4")}`;
 
 /** HornBill demo reel: defers `<video>` mount until the tile is near viewport. */
 function FeatureMockVideo() {
@@ -427,7 +427,7 @@ function LiveShowcase() {
       bg: "bg-sky",
       stack: ["KiCad", "ESP32", "ArduPilot", "Fusion 360"],
       help: "Looking for RF / antenna design help",
-      media: { kind: "image" as const, src: "/projects/Drone.png" },
+      media: { kind: "image" as const, src: "/projects/Drone.webp" },
       href: "https://github.com/BENi-Aditya/Drone_Brain",
     },
     {
@@ -449,7 +449,7 @@ function LiveShowcase() {
       bg: "bg-mint",
       stack: ["TypeScript", "Whisper", "WebRTC", "Edge inference"],
       help: "Looking for prompt / UX writing",
-      media: { kind: "image" as const, src: "/projects/ai-talkbot.png" },
+      media: { kind: "image" as const, src: "/projects/ai-talkbot.webp" },
       href: "https://github.com/BENi-Aditya/BENi_AI_TalkBOT",
     },
     {
@@ -460,7 +460,7 @@ function LiveShowcase() {
       bg: "bg-grape",
       stack: ["Python", "OpenCV", "Raspberry Pi", "Depth cam"],
       help: "Seeking campus field testers",
-      media: { kind: "image" as const, src: "/projects/Blindsight.png" },
+      media: { kind: "image" as const, src: "/projects/Blindsight.webp" },
       href: "https://github.com/BENi-Aditya/Blind-Accesibility-Device",
     },
     {
@@ -471,7 +471,7 @@ function LiveShowcase() {
       bg: "bg-mint",
       stack: ["Python", "Grafana", "SDR", "TLE tools"],
       help: "Open for data viz collaborator",
-      media: { kind: "image" as const, src: "/projects/satellite.png" },
+      media: { kind: "image" as const, src: "/projects/satellite.webp" },
       href: "https://adityabeni.vercel.app/",
     },
     {
@@ -482,7 +482,7 @@ function LiveShowcase() {
       bg: "bg-grape",
       stack: ["C++", "FreeRTOS", "MAVLink", "Sensor fusion"],
       help: "Need a careful firmware review pass",
-      media: { kind: "image" as const, src: "/projects/Jatayu.png" },
+      media: { kind: "image" as const, src: "/projects/Jatayu.webp" },
       href: "https://github.com/BENi-Aditya/thequadcoach-refine-",
     },
   ];
@@ -693,7 +693,7 @@ function FeatureShowcase() {
               <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 <div className="relative aspect-square min-w-0 overflow-hidden rounded-sm border-2 border-foreground bg-black">
                   <img
-                    src="/projects/Drone.png"
+                    src="/projects/Drone.webp"
                     alt="HornBill drone"
                     className="absolute inset-0 size-full object-cover object-center"
                     loading="lazy"
@@ -703,7 +703,7 @@ function FeatureShowcase() {
                 </div>
                 <div className="relative aspect-square min-w-0 overflow-hidden rounded-sm border-2 border-foreground bg-black">
                   <img
-                    src="/projects/Payload.png"
+                    src="/projects/Payload.webp"
                     alt="Payload system"
                     className="absolute inset-0 size-full object-cover object-center"
                     loading="lazy"
@@ -741,7 +741,7 @@ function BuilderProfileFeature() {
             <div className="flex items-start justify-between mb-8">
               <div className="flex items-center gap-4 min-w-0">
                 <img
-                  src="/projects/aditya.png"
+                  src="/projects/aditya.webp"
                   alt=""
                   className="size-16 rounded-full border-2 border-foreground object-cover shrink-0"
                   loading="lazy"
