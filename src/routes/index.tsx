@@ -144,18 +144,20 @@ function Index() {
     <div className="min-h-screen text-foreground overflow-x-hidden bg-background">
       <NeoCursor />
       <Nav />
-      <Hero />
-      <LiveShowcase />
-      <WhyExists />
-      <FeatureShowcase />
-      <BuilderProfileFeature />
-      <TeamMatching />
-      <AIAssistant />
-      <BuildFeed />
-      <SocialProof />
-      <HowItWorks />
-      <Categories />
-      <FinalCTA />
+      <main className="space-y-32 md:space-y-48">
+        <Hero />
+        <LiveShowcase />
+        <WhyExists />
+        <FeatureShowcase />
+        <BuilderProfileFeature />
+        <TeamMatching />
+        <AIAssistant />
+        <BuildFeed />
+        <SocialProof />
+        <HowItWorks />
+        <Categories />
+        <FinalCTA />
+      </main>
       <Footer />
     </div>
   );
@@ -199,7 +201,7 @@ function Hero() {
       <div className="grid-bg">
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-28 lg:pt-28 grid lg:grid-cols-12 gap-12 items-center">
           {/* LEFT */}
-          <div className="lg:col-span-6 relative z-10">
+          <div className="lg:col-span-6 relative z-10 py-12 md:py-20">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-mint text-mint-foreground border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] text-xs font-black tracking-wide uppercase mb-8">
               <Hammer className="size-3.5" />
               In active development — shipping soon
@@ -488,8 +490,8 @@ function LiveShowcase() {
   ];
 
   return (
-    <section id="explore" className="max-w-7xl mx-auto px-6 py-24">
-      <div className="mb-12">
+    <section id="explore" className="max-w-7xl mx-auto px-6">
+      <div className="mb-20">
         <div>
           <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-4">
             01 / Project lab
@@ -506,7 +508,7 @@ function LiveShowcase() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((p) => (
           <ProjectCard key={p.title} {...p} />
         ))}
@@ -595,7 +597,7 @@ function WhyExists() {
   ];
   return (
     <section className="bg-card border-y-2 border-foreground/10">
-      <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 py-32 md:py-48 grid lg:grid-cols-12 gap-20 items-center">
         <div className="lg:col-span-6">
           <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-5">
             02 / Why we exist
@@ -644,8 +646,8 @@ function FeatureShowcase() {
   const repo = "https://github.com/BENi-Aditya/Drone_Brain";
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-24">
-      <div className="grid lg:grid-cols-12 gap-12 items-center">
+    <section className="max-w-7xl mx-auto px-6">
+      <div className="grid lg:grid-cols-12 gap-20 items-center">
         <div className="lg:col-span-5 order-2 lg:order-1">
           <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-5">
             03 / Project pages
@@ -735,7 +737,7 @@ function FeatureShowcase() {
 function BuilderProfileFeature() {
   return (
     <section className="bg-card border-y-2 border-foreground/10">
-      <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 py-32 md:py-48 grid lg:grid-cols-12 gap-20 items-center">
         <div className="lg:col-span-7">
           <div className="bg-background border-2 border-foreground shadow-[10px_10px_0_0_var(--color-foreground)] p-6 md:p-8">
             <div className="flex items-start justify-between mb-8">
@@ -825,7 +827,7 @@ function BuilderProfileFeature() {
 /* ---------------- TEAM MATCHING ---------------- */
 function TeamMatching() {
   return (
-    <section id="teams" className="max-w-7xl mx-auto px-6 py-24">
+    <section id="teams" className="max-w-7xl mx-auto px-6">
       <div className="border-2 border-foreground shadow-[12px_12px_0_0_var(--color-foreground)] grid lg:grid-cols-2 overflow-hidden">
         <div className="p-10 md:p-14 bg-card">
           <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-5">
@@ -886,8 +888,8 @@ function TeamMatching() {
 /* ---------------- AI ASSISTANT ---------------- */
 function AIAssistant() {
   return (
-    <section id="ai" className="max-w-7xl mx-auto px-6 py-24">
-      <div className="text-center max-w-2xl mx-auto mb-12">
+    <section id="ai" className="max-w-7xl mx-auto px-6">
+      <div className="text-center max-w-2xl mx-auto mb-20">
         <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-5">
           06 / AI mentor
         </div>
@@ -897,7 +899,7 @@ function AIAssistant() {
         <p className="text-lg text-muted-foreground">Trained on thousands of hackathon wins and student startups.</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <div className="bg-card border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)] p-8">
           <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-mint mb-4">
             <Bot className="size-4" /> OpenBuilder AI
@@ -944,8 +946,8 @@ function BuildFeed() {
   ];
   return (
     <section id="feed" className="bg-card border-y-2 border-foreground/10">
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div className="max-w-7xl mx-auto px-6 py-32 md:py-48">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10 mb-20">
           <div>
             <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-4">
               07 / Public build feed
@@ -957,7 +959,7 @@ function BuildFeed() {
           <div className="text-sm text-muted-foreground font-mono">live · updates every second</div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-8">
           {feed.map((f, i) => (
             <div key={i} className="bg-background border-2 border-foreground shadow-[5px_5px_0_0_var(--color-foreground)] p-5 flex items-center gap-4">
               <div className={`size-12 shrink-0 ${f.color} border-2 border-foreground grid place-items-center text-white`}>
@@ -984,32 +986,33 @@ function BuildFeed() {
 
 /* ---------------- SOCIAL PROOF ---------------- */
 function SocialProof() {
-  const items = [
-    { n: "15K+", l: "Student builders" },
-    { n: "200+", l: "Universities" },
-    { n: "8.4K", l: "Projects shipped" },
-    { n: "1.2K", l: "Hackathon wins" },
+  const points = [
+    { i: <Rocket className="size-6" />, t: "Launch in public", d: "Turn your prototypes into visual project pages that people actually want to explore.", c: "bg-mint" },
+    { i: <Users className="size-6" />, t: "Find your squad", d: "Connect with hackers, designers, and engineers who share your obsession for building.", c: "bg-tangerine" },
+    { i: <Cpu className="size-6" />, t: "Hardware & Software", d: "From PCB designs to LLM agents, showcase the full stack of your creative output.", c: "bg-grape" },
+    { i: <Sparkles className="size-6" />, t: "Proof of work", d: "Stop relying on resumes. Let your projects and contributions speak for your skills.", c: "bg-sky" },
   ];
+
   return (
-    <section className="max-w-7xl mx-auto px-6 py-24">
-      <div className="text-center mb-12">
-        <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-5">
+    <section className="max-w-7xl mx-auto px-6 py-40">
+      <div className="text-center mb-20">
+        <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-6">
           08 / Built for builders
         </div>
-        <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
+        <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight max-w-4xl mx-auto">
           Made for student founders, hackers, and hardware nerds.
         </h2>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {items.map((x, i) => {
-          const colors = ["bg-mint","bg-tangerine","bg-grape","bg-sky"];
-          return (
-            <div key={x.l} className={`${colors[i]} p-8 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] text-white`}>
-              <div className="font-display text-5xl font-bold">{x.n}</div>
-              <div className="text-sm font-bold uppercase tracking-widest mt-2 opacity-80">{x.l}</div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {points.map((x) => (
+          <div key={x.t} className={`${x.c} p-10 border-2 border-foreground shadow-[8px_8px_0_0_var(--color-foreground)] text-white flex flex-col items-center text-center`}>
+            <div className="size-16 bg-white/20 backdrop-blur border-2 border-white/40 grid place-items-center mb-6">
+              {x.i}
             </div>
-          );
-        })}
+            <div className="font-display text-2xl font-bold mb-3">{x.t}</div>
+            <div className="text-sm font-medium opacity-90 leading-relaxed">{x.d}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -1024,8 +1027,8 @@ function HowItWorks() {
   ];
   return (
     <section className="bg-card border-y-2 border-foreground/10">
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-12">
+      <div className="max-w-7xl mx-auto px-6 py-32 md:py-48">
+        <div className="text-center mb-20">
           <div className="inline-block text-xs font-mono uppercase tracking-widest bg-foreground text-background px-2 py-1 mb-5">
             09 / How it works
           </div>
@@ -1084,8 +1087,8 @@ function Categories() {
 /* ---------------- FINAL CTA ---------------- */
 function FinalCTA() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-32">
-      <div className="bg-mint text-mint-foreground border-2 border-foreground shadow-[14px_14px_0_0_var(--color-foreground)] p-10 md:p-20 text-center relative overflow-hidden">
+    <section className="max-w-7xl mx-auto px-6 py-40">
+      <div className="bg-mint text-mint-foreground border-2 border-foreground shadow-[14px_14px_0_0_var(--color-foreground)] p-12 md:p-32 text-center relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative">
           <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-3xl mx-auto leading-[0.95]">
@@ -1115,7 +1118,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src="/logo.png" alt="OpenBuilder" className="size-8 border-2 border-foreground object-cover" />
+            <img src="/logo.webp" alt="OpenBuilder" className="size-8 border-2 border-foreground object-cover" />
             <span className="font-display font-bold">OpenBuilder</span>
           </div>
           <p className="text-sm text-muted-foreground mb-4">Build publicly. Collaborate openly.</p>

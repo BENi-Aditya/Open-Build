@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/logo.png" alt="OpenBuilder Logo" width="140"/>
+<img src="public/logo.webp" alt="OpenBuilder Logo" width="140"/>
 
 # OPENBUILDER
 
