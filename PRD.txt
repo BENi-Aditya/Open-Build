@@ -33,6 +33,7 @@ OpenBuilder is a visual AI-powered platform where student developers, designers,
 
 The platform combines:
 
+
 * visual project showcasing
 * developer portfolios
 * startup execution tools
