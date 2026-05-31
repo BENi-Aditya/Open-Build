@@ -25,14 +25,14 @@ import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    title: "OpenBuilder",
     meta: [
-      { title: "OpenBuilder: The internet home for student builders" },
       {
         name: "description",
         content:
           "OpenBuilder is in active development: a home for student builders to showcase hardware and software projects, find collaborators, and ship in public.",
       },
-      { property: "og:title", content: "OpenBuilder: Build publicly. Collaborate openly." },
+      { property: "og:title", content: "OpenBuilder" },
       {
         property: "og:description",
         content: "Where the next generation of student builders ship cool things, together.",
@@ -218,9 +218,9 @@ function Hero() {
                 Start Building
                 <ArrowUpRight className="size-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
               </a>
-              <button className="inline-flex items-center gap-2 bg-card text-foreground font-bold px-7 py-4 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_0_var(--color-foreground)] transition">
+              <a href="https://app.openbuilder.in/" className="inline-flex items-center gap-2 bg-card text-foreground font-bold px-7 py-4 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_0_var(--color-foreground)] transition">
                 Explore Projects
-              </button>
+              </a>
             </div>
           </div>
 
