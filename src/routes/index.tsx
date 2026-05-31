@@ -182,12 +182,12 @@ function Nav() {
           <a href="#ai" className="hover:text-foreground transition">AI Mentor</a>
         </div>
         <div className="flex items-center gap-3">
-          <button className="text-sm font-semibold text-muted-foreground hover:text-foreground transition hidden sm:block">
+          <a href="https://app.openbuilder.in/auth" className="text-sm font-semibold text-muted-foreground hover:text-foreground transition hidden sm:block">
             Sign in
-          </button>
-          <button className="text-sm font-bold bg-mint text-mint-foreground px-4 py-2 border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0_0_var(--color-foreground)] transition">
+          </a>
+          <a href="https://app.openbuilder.in/auth" className="text-sm font-bold bg-mint text-mint-foreground px-4 py-2 border-2 border-foreground shadow-[3px_3px_0_0_var(--color-foreground)] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[5px_5px_0_0_var(--color-foreground)] transition">
             Start building
-          </button>
+          </a>
         </div>
       </div>
     </nav>
@@ -214,10 +214,10 @@ function Hero() {
             </h1>
 
             <div className="flex flex-wrap gap-4">
-              <button className="group inline-flex items-center gap-2 bg-mint text-mint-foreground font-bold px-7 py-4 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_0_var(--color-foreground)] transition">
+              <a href="https://app.openbuilder.in/auth" className="group inline-flex items-center gap-2 bg-mint text-mint-foreground font-bold px-7 py-4 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_0_var(--color-foreground)] transition">
                 Start Building
                 <ArrowUpRight className="size-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
-              </button>
+              </a>
               <button className="inline-flex items-center gap-2 bg-card text-foreground font-bold px-7 py-4 border-2 border-foreground shadow-[6px_6px_0_0_var(--color-foreground)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_0_var(--color-foreground)] transition">
                 Explore Projects
               </button>
@@ -1098,12 +1098,12 @@ function FinalCTA() {
             Don't build alone. Find your people. Ship in public.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="inline-flex items-center gap-2 bg-mint-foreground text-mint font-bold px-8 py-4 border-2 border-mint-foreground shadow-[6px_6px_0_0_oklch(0.2_0.03_260)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition">
+            <a href="https://app.openbuilder.in/auth" className="inline-flex items-center gap-2 bg-mint-foreground text-mint font-bold px-8 py-4 border-2 border-mint-foreground shadow-[6px_6px_0_0_oklch(0.2_0.03_260)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition">
               Join OpenBuilder <ArrowUpRight className="size-5" />
-            </button>
-            <button className="inline-flex items-center gap-2 bg-mint text-mint-foreground font-bold px-8 py-4 border-2 border-mint-foreground hover:bg-mint-foreground hover:text-mint transition">
+            </a>
+            <a href="https://github.com/BENi-Aditya" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-mint text-mint-foreground font-bold px-8 py-4 border-2 border-mint-foreground hover:bg-mint-foreground hover:text-mint transition">
               <Github className="size-4" /> Continue with GitHub
-            </button>
+            </a>
           </div>
         </div>
       </div>
