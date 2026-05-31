@@ -23,5 +23,55 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/home",
+      "destination": "https://openbuilder-mvp.netlify.app/home"
+    },
+    {
+      "source": "/chat",
+      "destination": "https://openbuilder-mvp.netlify.app/chat"
+    },
+    {
+      "source": "/explore",
+      "destination": "https://openbuilder-mvp.netlify.app/explore"
+    },
+    {
+      "source": "/collab",
+      "destination": "https://openbuilder-mvp.netlify.app/collab"
+    },
+    {
+      "source": "/notifications",
+      "destination": "https://openbuilder-mvp.netlify.app/notifications"
+    },
+    {
+      "source": "/saved",
+      "destination": "https://openbuilder-mvp.netlify.app/saved"
+    },
+    {
+      "source": "/settings",
+      "destination": "https://openbuilder-mvp.netlify.app/settings"
+    },
+    {
+      "source": "/new",
+      "destination": "https://openbuilder-mvp.netlify.app/new"
+    },
+    {
+      "source": "/auth",
+      "destination": "https://openbuilder-mvp.netlify.app/auth"
+    },
+    {
+      "source": "/p/:path*",
+      "destination": "https://openbuilder-mvp.netlify.app/p/:path*"
+    },
+    {
+      "source": "/u/:path*",
+      "destination": "https://openbuilder-mvp.netlify.app/u/:path*"
+    }
   ]
 }
