@@ -68,35 +68,49 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    title: "OpenBuilder",
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "description", content: "OpenBuilder" },
-      { name: "author", content: "OpenBuilder" },
-      { property: "og:title", content: "OpenBuilder" },
-      { property: "og:description", content: "OpenBuilder" },
-      { property: "og:image", content: "/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "/og-image.png" },
-    ],
-    links: [
-      
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "icon",
-        type: "image/webp",
-        href: "/logo.webp",
-      },
-    ],
-  }),
+  head: () => {
+    const siteUrl = "https://openbuilder.in";
+    const ogImageUrl = `${siteUrl}/og-image.png`;
+    
+    return {
+      title: "OpenBuilder",
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "description", content: "OpenBuilder" },
+        { name: "author", content: "OpenBuilder" },
+        // Open Graph
+        { property: "og:title", content: "OpenBuilder" },
+        { property: "og:description", content: "OpenBuilder" },
+        { property: "og:image", content: ogImageUrl },
+        { property: "og:image:secure_url", content: ogImageUrl },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:type", content: "image/png" },
+        { property: "og:image:alt", content: "OpenBuilder - The internet home for student builders" },
+        { property: "og:url", content: siteUrl },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "OpenBuilder" },
+        // Twitter/X
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "OpenBuilder" },
+        { name: "twitter:description", content: "OpenBuilder" },
+        { name: "twitter:image", content: ogImageUrl },
+        { name: "twitter:image:alt", content: "OpenBuilder - The internet home for student builders" },
+      ],
+      links: [
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        {
+          rel: "icon",
+          type: "image/webp",
+          href: "/logo.webp",
+        },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

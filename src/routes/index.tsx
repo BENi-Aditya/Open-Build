@@ -24,33 +24,56 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    title: "OpenBuilder",
-    meta: [
-      {
-        name: "description",
-        content:
-          "OpenBuilder is in active development: a home for student builders to showcase hardware and software projects, find collaborators, and ship in public.",
-      },
-      { property: "og:title", content: "OpenBuilder" },
-      {
-        property: "og:description",
-        content: "Where the next generation of student builders ship cool things, together.",
-      },
-      { property: "og:image", content: "/og-image.png" },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:type", content: "website" },
-    ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap",
-      },
-    ],
-  }),
+  head: () => {
+    const siteUrl = "https://openbuilder.in";
+    const ogImageUrl = `${siteUrl}/og-image.png`;
+    
+    return {
+      title: "OpenBuilder",
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          name: "description",
+          content:
+            "OpenBuilder is in active development: a home for student builders to showcase hardware and software projects, find collaborators, and ship in public.",
+        },
+        { name: "author", content: "OpenBuilder" },
+        // Open Graph
+        { property: "og:title", content: "OpenBuilder" },
+        {
+          property: "og:description",
+          content: "Where the next generation of student builders ship cool things, together.",
+        },
+        { property: "og:image", content: ogImageUrl },
+        { property: "og:image:secure_url", content: ogImageUrl },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:type", content: "image/png" },
+        { property: "og:image:alt", content: "OpenBuilder - The internet home for student builders" },
+        { property: "og:url", content: siteUrl },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "OpenBuilder" },
+        // Twitter/X
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "OpenBuilder" },
+        {
+          name: "twitter:description",
+          content: "Where the next generation of student builders ship cool things, together.",
+        },
+        { name: "twitter:image", content: ogImageUrl },
+        { name: "twitter:image:alt", content: "OpenBuilder - The internet home for student builders" },
+      ],
+      links: [
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap",
+        },
+      ],
+    };
+  },
   component: Index,
 });
 
