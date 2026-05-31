@@ -37,6 +37,10 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Where the next generation of student builders ship cool things, together.",
       },
+      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
