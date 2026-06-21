@@ -10,6 +10,7 @@ Files: src/styles.css, src/routes/index.tsx
 ================================================================================
 
 OVERALL AESTHETIC
+
 -----------------
 OpenBuilder uses a hybrid of:
   • Neo-brutalism — thick borders, hard offset shadows, no soft blur on cards
